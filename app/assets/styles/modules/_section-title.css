@@ -24,6 +24,10 @@
     }
   }
 
+  &--blue{
+    color: $mainBlue;
+  }
+
   strong{
     font-weight: 500;
   }
