@@ -1170,6 +1170,13 @@ a{
   z-index: 2;
   width: 100%;
   padding: 10px 0;
+  -webkit-transition: background-color 0.3s ease-out;
+  transition: background-color 0.3s ease-out;
+
+}
+
+.site-header--is-expanded{
+  background-color: rgba(47,85,114, 0.55);
 }
 
 /*800px and over*/
@@ -1181,8 +1188,13 @@ a{
   }
 }
 
-.site-header__btn-container{
-  float: right;
+/*800px and over*/
+
+@media(min-width: 800px) {
+
+  .site-header__btn-container {
+    float: right;
+  }
 }
 
 .site-header__logo{
@@ -1213,7 +1225,15 @@ a{
 }
 
 .site-header__menu-content{
-  display: none;
+  padding-top: 90px;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  opacity: 0;
+  text-align: center;
+  z-index: -1;
+  position: relative;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 /*800px and over*/
@@ -1221,21 +1241,73 @@ a{
 @media(min-width: 800px) {
 
   .site-header__menu-content {
-    display: block;
+    opacity: 1;
+    z-index: 1;
+    padding-top: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 .site-header__menu-content--is-visible{
-  display: block;
+  opacity: 1;
+  z-index: 2;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .site-header__menu-icon{
   width:20px;
-  height:20px;
-  background-color: #fff;
+  height:19px;
   position: absolute;
   top: 10px;
   right:10px;
+  z-index: 3;
+}
+
+.site-header__menu-icon::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: #fff;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+}
+
+.site-header__menu-icon__middle{
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: #fff;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+
+.site-header__menu-icon::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: #fff;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
 }
 
 /*800px and over*/
@@ -1247,8 +1319,44 @@ a{
   }
 }
 
-.primary-nav--pull-right{
-  float: right;
+.site-header__menu-icon--close-x::before{
+  -webkit-transform: rotate(45deg) scaleX(1.25);
+          transform: rotate(45deg) scaleX(1.25);
+}
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle{
+  opacity: 0;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+
+.site-header__menu-icon--close-x::after{
+  -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+          transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+}
+
+.primary-nav{
+  padding-top: 10px;
+
+
+}
+
+/*800px and over*/
+
+@media(min-width: 800px) {
+
+  .primary-nav {
+    padding-top: 0px;
+  }
+}
+
+/*800px and over*/
+
+@media(min-width: 800px) {
+
+  .primary-nav--pull-right {
+    float: right;
+  }
 }
 
 .primary-nav ul{
@@ -1264,8 +1372,32 @@ a{
 
 .primary-nav li{
   list-style: none;
-  float: left;
-  padding-right: 20px;
+  padding-right: 7px;
+  display: inline-block;
+}
+
+/*800px and over*/
+
+@media(min-width: 800px) {
+
+  .primary-nav li {
+    float: left;
+    padding-right: 20px;
+    display: block;
+  }
+}
+
+.primary-nav li:last-child{
+  padding-right: 0;
+}
+
+/*800px and over*/
+
+@media(min-width: 800px) {
+
+  .primary-nav li:last-child {
+    padding-right: 20px;
+  }
 }
 
 .primary-nav a{
@@ -1273,5 +1405,18 @@ a{
   text-decoration: none;
   font-weight: 400;
   display: block;
-  padding-top: 12px;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  background-color: rgba(47,85,114, 0.5);
+}
+
+/*800px and over*/
+
+@media(min-width: 800px) {
+
+  .primary-nav a {
+    padding-top: 12px 0;
+    font-size: 1rem;
+    background-color: transparent;
+  }
 }
