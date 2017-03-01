@@ -1242,8 +1242,8 @@ a{
   }
 
   .site-header--dark .site-header__logo {
-    -webkit-transform: scale(0.55);
-            transform: scale(0.55);
+    -webkit-transform: scale(0.565);
+            transform: scale(0.565);
   }
 }
 
